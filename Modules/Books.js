@@ -17,6 +17,8 @@ export default class Books {
     this.booksList = this.#getBooksList();
     this.booksList.push(bookValues);
     this.#SetBooksList(this.booksList);
+    document.querySelector("#add-new-book").style.display = "none";
+    document.querySelector("#show-books").style.display = "flex";
   };
 
   deleteBook = (bookIndex) => {

@@ -1,11 +1,15 @@
 const Navigation = (sectionId) => {
   const navSections = document.querySelectorAll("section");
+  const linkMenu = document.querySelectorAll(".navBtn");
   navSections.forEach((section) => {
-    section.classList.remove("active");
     section.style.display = "none";
   });
-  sectionId.classList.add("active");
-  sectionId.style.display = "flex";
+  linkMenu.forEach((menu) => {
+    menu.classList.remove("active");
+  });
+
+  document.querySelector(`#${sectionId}`).classList.add("active");
+  document.querySelector(`.${sectionId}`).style.display = "flex"; //working
 };
 
 export default Navigation;
