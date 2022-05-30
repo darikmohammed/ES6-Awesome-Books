@@ -27,6 +27,11 @@ ul {
   list-style: none;
   cursor: pointer;
 }
+.showDate {
+  position: absolute;
+  right: 2rem;
+  top: 5rem;
+}
 
 .active {
   color: #ff7600;
@@ -106,9 +111,6 @@ ul {
   margin-right: 1.5rem;
 }
 
-/* .book1 {
-  background-color: #a09c9c;
-} */
 button.removebtn {
   margin-left: auto;
   background-color: #000472;

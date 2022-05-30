@@ -22,14 +22,16 @@ export default class Books {
   };
 
   deleteBook = (bookIndex) => {
+    let bookRemoved;
     if (bookIndex !== null) {
       const books = this.#getBooksList();
 
-      const bookRemoved = books.filter((item, key) => {
-        if (key !== bookIndex) {
+      bookRemoved = books.filter((item, key) => {
+        if (key == bookIndex) {
+          return null;
+        } else {
           return true;
         }
-        return null;
       });
       this.#SetBooksList(bookRemoved);
       this.showBooks();
@@ -44,7 +46,7 @@ export default class Books {
           <div class="book">
           <h3>"${books[i].title}"</h3>
           <p><span class="by-span"> By </span> ${books[i].autor}</p>
-          <button type="button" onClick= "remove(${i})" class='removebtn'>Remove</button>
+          <button type="button" data-index="${i}" class='removebtn'>Remove</button>
           `;
     }
   };
