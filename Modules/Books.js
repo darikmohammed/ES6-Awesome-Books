@@ -2,23 +2,25 @@ export default class Books {
   constructor() {
     this.bookList = [];
   }
+
   #SetBooksList = (books) => {
-    localStorage.setItem("Books", JSON.stringify(books));
+    localStorage.setItem('Books', JSON.stringify(books));
   };
 
   #getBooksList = () => {
-    const books = JSON.parse(localStorage.getItem("Books"));
+    const books = JSON.parse(localStorage.getItem('Books'));
     if (books) {
       return books;
     }
     return [];
   };
+
   newBook = (bookValues) => {
     this.booksList = this.#getBooksList();
     this.booksList.push(bookValues);
     this.#SetBooksList(this.booksList);
-    document.querySelector("#add-new-book").style.display = "none";
-    document.querySelector("#show-books").style.display = "flex";
+    document.querySelector('#add-new-book').style.display = 'none';
+    document.querySelector('#show-books').style.display = 'flex';
   };
 
   deleteBook = (bookIndex) => {
@@ -27,20 +29,20 @@ export default class Books {
       const books = this.#getBooksList();
 
       bookRemoved = books.filter((item, key) => {
-        if (key == bookIndex) {
+        if (key === parseInt(bookIndex, 10)) {
           return null;
-        } else {
-          return true;
         }
+        return true;
       });
       this.#SetBooksList(bookRemoved);
       this.showBooks();
     }
   };
+
   showBooks = () => {
     const books = this.#getBooksList();
-    const htmlbooks = document.querySelector(".books");
-    htmlbooks.innerHTML = "";
+    const htmlbooks = document.querySelector('.books');
+    htmlbooks.innerHTML = '';
     for (let i = 0; i < books.length; i += 1) {
       htmlbooks.innerHTML += `
           <div class="book">

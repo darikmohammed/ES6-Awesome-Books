@@ -27,6 +27,7 @@ ul {
   list-style: none;
   cursor: pointer;
 }
+
 .showDate {
   position: absolute;
   right: 2rem;

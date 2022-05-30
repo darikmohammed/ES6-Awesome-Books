@@ -1,25 +1,25 @@
-import Navigation from "../../Modules/Navigation.js";
-import Books from "../../Modules/Books.js";
-import { DateTime } from "../../Modules/luxon.js";
+import Navigation from '../../Modules/Navigation.js';
+import Books from '../../Modules/Books.js';
+import { DateTime } from '../../node_modules/luxon/src/luxon.js';
 
 const awesomeBooks = new Books();
-const form = document.querySelector("#add-book");
-const navMenu = document.querySelectorAll(".navBtn");
+const form = document.querySelector('#add-book');
+const navMenu = document.querySelectorAll('.navBtn');
 
-form.addEventListener("submit", (event) => {
+form.addEventListener('submit', (event) => {
   event.preventDefault();
-  const bookTitle = document.querySelector("#title");
-  const bookAutor = document.querySelector("#autor");
+  const bookTitle = document.querySelector('#title');
+  const bookAutor = document.querySelector('#autor');
 
-  if (bookTitle.value.trim() !== "" && bookAutor.value.trim() !== "") {
+  if (bookTitle.value.trim() !== '' && bookAutor.value.trim() !== '') {
     const bookValues = {
       autor: bookAutor.value,
       title: bookTitle.value,
     };
     awesomeBooks.newBook(bookValues);
     awesomeBooks.showBooks();
-    bookTitle.value = "";
-    bookAutor.value = "";
+    bookTitle.value = '';
+    bookAutor.value = '';
   }
 });
 
@@ -28,18 +28,18 @@ const remove = (index) => {
 };
 
 navMenu.forEach((nav) => {
-  nav.addEventListener("click", () => {
-    Navigation(nav.getAttribute("id"));
+  nav.addEventListener('click', () => {
+    Navigation(nav.getAttribute('id'));
   });
 });
 
 remove(-1);
 awesomeBooks.showBooks();
 
-const removeButton = document.querySelectorAll("button.removebtn");
+const removeButton = document.querySelectorAll('button.removebtn');
 
 removeButton.forEach((btn) => {
-  btn.addEventListener("click", () => {
+  btn.addEventListener('click', () => {
     remove(btn.dataset.index);
   });
 });
@@ -53,5 +53,5 @@ setInterval(() => {
   const showDate = `${now.toLocaleString(DateTime.DATE_FULL)} ${
     now.hour
   }:${twoDigits(now.minute)}:${twoDigits(now.second)} hrs.`;
-  document.querySelector(".showDate").innerHTML = showDate;
+  document.querySelector('.showDate').innerHTML = showDate;
 }, 1000);
